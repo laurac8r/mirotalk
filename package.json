@@ -2,10 +2,13 @@
     "name": "mirotalk",
     "version": "2.0.30",
     "description": "A free WebRTC browser-based video call",
-    "main": "server.js",
+    "main": "app/src/main.js",
     "scripts": {
         "prestart": "test -f app/src/config.js || cp app/src/config.template.js app/src/config.js",
         "start": "electron app/src/main.js",
+        "package": "electron-forge package",
+        "pack-and-sign": "electron-builder",
+        "make": "electron-forge make",
         "start-dev": "nodemon app/src/server.js",
         "test": "mocha tests/*.js",
         "lint": "npx prettier --write .",
@@ -21,6 +24,16 @@
         "docker:run-vm": "docker run -d -p 3000:3000 -v .env:/src/.env:ro -v ./app/:/src/app/:ro -v ./public/:/src/public/:ro --name mirotalk mirotalk/p2p:latest",
         "docker:start": "docker start mirotalk",
         "docker:stop": "docker stop mirotalk"
+    },
+    "config": {
+        "forge": {
+            "outDir": "dist/build/unsigned"
+        }
+    },
+    "build": {
+        "directories": {
+            "output": "dist/build/signed"
+        }
     },
     "repository": {
         "type": "git",
@@ -72,7 +85,11 @@
         "uuid": "14.0.2"
     },
     "devDependencies": {
+        "@electron-forge/cli": "^8.0.1",
+        "@types/express": "^5.0.6",
+        "@types/node": "^26.6.3",
         "electron": "^44.5.0",
+        "electron-builder": "^26.15.3",
         "mocha": "^12.0.2",
         "node-fetch": "^3.3.2",
         "nodemon": "^3.1.14",
@@ -81,5 +98,7 @@
         "should": "^13.2.3",
         "sinon": "^22.1.0",
         "socket.io-client": "^4.8.4"
+        "socket.io-client": "^4.8.4",
+        "webpack": "^5.111.1"
     }
 }
