@@ -5,7 +5,7 @@
     "main": "server.js",
     "scripts": {
         "prestart": "test -f app/src/config.js || cp app/src/config.template.js app/src/config.js",
-        "start": "node app/src/server.js",
+        "start": "electron app/src/main.js",
         "start-dev": "nodemon app/src/server.js",
         "test": "mocha tests/*.js",
         "lint": "npx prettier --write .",
@@ -72,6 +72,7 @@
         "uuid": "14.0.2"
     },
     "devDependencies": {
+        "electron": "^44.5.0",
         "mocha": "^12.0.2",
         "node-fetch": "^3.3.2",
         "nodemon": "^3.1.14",
