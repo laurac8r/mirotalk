@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "allowJs": true, // Tells tsc to read and process .js files
+        "checkJs": false, // Optional: Enables type-checking inside your .js files (using JSDoc)
+        "target": "es2022",
+        "module": "commonjs",
+        "outDir": "./dist",
+        "esModuleInterop": true,
+        "strict": true,
+        "skipLibCheck": true
+    },
+    "include": ["*/**/*"]
+}
